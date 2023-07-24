@@ -18,6 +18,7 @@
  */
 import {
   createDurationFormatter,
+  createIndianCurrencyFormatter,
   getNumberFormatter,
   getNumberFormatterRegistry,
   NumberFormats,
@@ -30,6 +31,7 @@ import { FormatLocaleDefinition } from 'd3-format';
 export default function setupFormatters(
   d3Format: Partial<FormatLocaleDefinition>,
 ) {
+
   getNumberFormatterRegistry()
     .setD3Format(d3Format)
     // Add shims for format strings that are deprecated or common typos.
@@ -70,6 +72,11 @@ export default function setupFormatters(
     .registerValue(
       'DURATION_SUB',
       createDurationFormatter({ formatSubMilliseconds: true }),
+    )
+    // Add CURRENCY_INDIA
+    .registerValue(
+      'CURRENCY_INDIA',
+      createIndianCurrencyFormatter(),
     );
 
   getTimeFormatterRegistry()
