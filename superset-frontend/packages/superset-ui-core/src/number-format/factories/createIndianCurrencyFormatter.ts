@@ -17,21 +17,27 @@
  * under the License.
  */
 
-import prettyMsFormatter from 'pretty-ms';
 import prettyMilliseconds from 'pretty-ms';
 import NumberFormatter from '../NumberFormatter';
 
-const indianCurrencyFormatter = (num : number, options?: prettyMilliseconds.Options) => {
+function indianCurrencyFormatter(
+  num: number,
+  options?: prettyMilliseconds.Options,
+) {
   if (num >= 10000000) {
-      return (num / 10000000).toFixed(2) + 'Cr';
-  } else if (num >= 100000) {
-      return (num / 100000).toFixed(2) + 'L';
-  } else if (num >= 1000) {
-      return (num / 1000).toFixed(2) + 'K';
-  } else {
-      return num.toFixed(2);
+    return `${(num / 10000000).toFixed(2)} Cr`;
   }
-};
+
+  if (num >= 100000) {
+    return `${(num / 100000).toFixed(2)} L`;
+  }
+
+  if (num >= 1000) {
+    return `${(num / 1000).toFixed(2)} K`;
+  }
+
+  return `${num.toFixed(2)}`;
+}
 
 export default function createIndianCurrencyFormatter(
   config: {
@@ -39,13 +45,14 @@ export default function createIndianCurrencyFormatter(
     id?: string;
     label?: string;
     multiplier?: number;
-  } & prettyMsFormatter.Options = {},
+  } & prettyMilliseconds.Options = {},
 ) {
   const { description, id, label, multiplier = 1, ...prettyMsOptions } = config;
 
   return new NumberFormatter({
     description,
-    formatFunc: value => indianCurrencyFormatter(value * multiplier, prettyMsOptions),
+    formatFunc: value =>
+      indianCurrencyFormatter(value * multiplier, prettyMsOptions),
     id: id ?? 'duration_format',
     label: label ?? `Duration formatter`,
   });
