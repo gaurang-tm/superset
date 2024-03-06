@@ -18,6 +18,7 @@
  */
 import {
   createDurationFormatter,
+  createIndianCurrencyFormatter,
   getNumberFormatter,
   getNumberFormatterRegistry,
   NumberFormats,
@@ -70,7 +71,8 @@ export default function setupFormatters(
     .registerValue(
       'DURATION_SUB',
       createDurationFormatter({ formatSubMilliseconds: true }),
-    );
+    )
+    .registerValue('CURRENCY_INDIA', createIndianCurrencyFormatter());
 
   getTimeFormatterRegistry()
     .registerValue('smart_date', smartDateFormatter)
