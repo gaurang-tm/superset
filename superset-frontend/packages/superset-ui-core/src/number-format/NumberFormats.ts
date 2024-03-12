@@ -54,6 +54,8 @@ const SMART_NUMBER = 'SMART_NUMBER';
 const SMART_NUMBER_SIGNED = 'SMART_NUMBER_SIGNED';
 const OVER_MAX_HIDDEN = 'OVER_MAX_HIDDEN';
 
+const CURRENCY_INDIA = 'CURRENCY_INDIA';
+
 const NumberFormats = {
   DOLLAR,
   DOLLAR_ROUND,
@@ -84,6 +86,7 @@ const NumberFormats = {
   SMART_NUMBER,
   SMART_NUMBER_SIGNED,
   OVER_MAX_HIDDEN,
+  CURRENCY_INDIA,
 };
 
 export default NumberFormats;

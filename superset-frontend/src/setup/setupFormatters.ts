@@ -66,6 +66,7 @@ export default function setupFormatters(
     .registerValue('$,0', getNumberFormatter('$,.4f'))
     .registerValue('$,0f', getNumberFormatter('$,.4f'))
     .registerValue('$,.f', getNumberFormatter('$,.4f'))
+    .registerValue('CURRENCY_INDIA', getNumberFormatter('CURRENCY_INDIA'))
     .registerValue('DURATION', createDurationFormatter())
     .registerValue(
       'DURATION_SUB',
