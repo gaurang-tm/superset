@@ -21,6 +21,7 @@ import { RegistryWithDefaultKey, OverwritePolicy } from '../models';
 import { DEFAULT_D3_FORMAT } from './D3FormatConfig';
 import createD3NumberFormatter from './factories/createD3NumberFormatter';
 import createSmartNumberFormatter from './factories/createSmartNumberFormatter';
+import createShortenedIndianFormatter from './factories/createShortenedIndianFormatter';
 import NumberFormats from './NumberFormats';
 import NumberFormatter from './NumberFormatter';
 
@@ -43,6 +44,13 @@ export default class NumberFormatterRegistry extends RegistryWithDefaultKey<
     this.registerValue(
       NumberFormats.SMART_NUMBER_SIGNED,
       createSmartNumberFormatter({ signed: true }),
+    );
+    this.registerValue(
+      NumberFormats.CURRENCY_INDIA,
+      createShortenedIndianFormatter({
+        formatString: NumberFormats.CURRENCY_INDIA,
+        locale: this.d3Format,
+      }),
     );
     this.setDefaultKey(NumberFormats.SMART_NUMBER);
     this.d3Format = DEFAULT_D3_FORMAT;

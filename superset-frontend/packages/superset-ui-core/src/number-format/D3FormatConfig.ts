@@ -21,6 +21,6 @@ import { FormatLocaleDefinition } from 'd3-format';
 export const DEFAULT_D3_FORMAT: FormatLocaleDefinition = {
   decimal: '.',
   thousands: ',',
-  grouping: [3],
-  currency: ['$', ''],
+  grouping: [3, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+  currency: ['₹', ''],
 };
